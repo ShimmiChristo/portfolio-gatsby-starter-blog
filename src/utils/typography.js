@@ -1,17 +1,21 @@
 import Typography from "typography"
-import Wordpress2016 from "typography-theme-wordpress-2016"
 
-Wordpress2016.overrideThemeStyles = () => {
-  return {
-    "a.gatsby-resp-image-link": {
-      boxShadow: `none`,
+const typography = new Typography({
+  googleFonts: [
+    {
+      name: "Roboto",
+      styles: ["Light", "Regular", "Bold"],
     },
-  }
-}
-
-delete Wordpress2016.googleFonts
-
-const typography = new Typography(Wordpress2016)
+    {
+      name: "Open Sans",
+      styles: ["Regular"],
+    },
+  ],
+  headerFontFamily: ["Roboto", "Open Sans", "Lato"],
+  headerWeight: "Bold",
+  bodyFontFamily: ["Menlo", "Monaco", "Courier New"],
+  bodyWeight: "Regular",
+})
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

@@ -1,12 +1,40 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
+    title: `Chris Shimmin`,
+    author: `Chris Shimmin`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteTitle: `Chris`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `shimmiChristo`,
+      email: `https://chris@chrisshimmin.com`,
+      linkedin: `in/chris-shimmin-29840b7a/`,
+      github: `shimmiChristo`,
     },
+    linkOne: `About`,
+    linkTwo: `Work`,
+    linkThree: `Blog`,
+
+    menuLinks: [
+      {
+        name: "home",
+        link: "/",
+      },
+      {
+        name: "about",
+        link: "/about-me",
+      },
+    ],
+    subMenu: [
+      {
+        name: "V1",
+        link: "/v1/index.html",
+      },
+      {
+        name: "V2",
+        link: "v2/index.html",
+      },
+    ],
   },
   plugins: [
     {
@@ -73,6 +101,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-styled-components`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
