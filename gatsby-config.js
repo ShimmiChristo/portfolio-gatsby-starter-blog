@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Chris Shimmin`,
-    author: `Chris Shimmin`,
+    author: `Chris S`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     siteTitle: `Chris`,
@@ -42,6 +42,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/websites`,
+        name: `websites`,
       },
     },
     {
