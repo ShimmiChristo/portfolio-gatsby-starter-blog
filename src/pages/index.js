@@ -1,13 +1,13 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Carousel from "../components/carousel"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Carousel from "../components/carousel";
 
 const HomeIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
+  const siteTitle = data.site.siteMetadata.title;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -16,10 +16,10 @@ const HomeIndex = ({ data, location }) => {
       <Carousel key="websites" title="Websites" data={data.websites.edges} />
       <Carousel key="youtube" title="YouTube" data={data.websites.edges} />
     </Layout>
-  )
-}
+  );
+};
 
-export default HomeIndex
+export default HomeIndex;
 
 export const pageQuery = graphql`
   query {
@@ -54,4 +54,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

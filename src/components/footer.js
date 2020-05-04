@@ -1,8 +1,8 @@
-import React from "react"
-import { useStaticQuery, Link, graphql } from "gatsby"
+import React from "react";
+import { useStaticQuery, Link, graphql } from "gatsby";
 
-import styled from "styled-components"
-import Image from "gatsby-image"
+import styled from "styled-components";
+import Image from "gatsby-image";
 
 const color = {
   black: "#282a36",
@@ -11,16 +11,15 @@ const color = {
   orange: "#ffb86c",
   pink: "#ff79c6",
   purple: "#bd93f9",
-}
+};
 
 const Footer = styled.footer`
   position: fixed;
   background: ${props => props.color.black};
   bottom: 0;
   left: 0;
-  height: 200px;
-  width: 18%;
-  max-width: 200px;
+  margin-bottom: 20px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,7 +28,6 @@ const Footer = styled.footer`
   @media (max-width: 768px) {
     position: fixed;
     width: 100%;
-    max-width: 100%;
     height: 100px;
     bottom: 0;
     left: 0;
@@ -37,7 +35,7 @@ const Footer = styled.footer`
     flex-direction: row;
     align-items: center;
   }
-`
+`;
 const Navigation = styled.nav`
   padding: 10px;
   flex-direction: column;
@@ -45,7 +43,7 @@ const Navigation = styled.nav`
   > a {
     font-size: 1rem
     color: #fff;
-    margin: 0 0 2vw;
+    margin: 0 0 2em;
     display: block;
     text-decorationcolor: #fff;
     text-decoration: none;
@@ -55,7 +53,7 @@ const Navigation = styled.nav`
   @media (max-width: 768px) {
     flex-direction: row;
   }
-`
+`;
 
 const SubNav = styled(Navigation)`
   left: 0;
@@ -68,9 +66,9 @@ const SubNav = styled(Navigation)`
 
   > a {
     font-size: 0.8rem;
-    margin: 0 1vw;
+    margin: 0 1em;
   }
-`
+`;
 
 const Social = styled(SubNav)`
   width: 100%;
@@ -79,13 +77,13 @@ const Social = styled(SubNav)`
   > a {
     margin: 0;
   }
-`
+`;
 const Span = styled.span`
   text-decoration: none;
-`
+`;
 const OrangeA = styled(Span)`
   color: ${props => props.color.orange};
-`
+`;
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -134,9 +132,9 @@ export default () => {
         }
       }
     }
-  `)
+  `);
 
-  const { social, subMenu } = data.site.siteMetadata
+  const { social, subMenu } = data.site.siteMetadata;
 
   return (
     <Footer color={color}>
@@ -162,5 +160,5 @@ export default () => {
         ))}
       </SubNav>
     </Footer>
-  )
-}
+  );
+};

@@ -1,8 +1,8 @@
-import React from "react"
-import { useStaticQuery, Link, graphql } from "gatsby"
+import React from "react";
+import { useStaticQuery, Link, graphql } from "gatsby";
 
-import styled from "styled-components"
-import Image from "gatsby-image"
+import styled from "styled-components";
+import Image from "gatsby-image";
 
 const color = {
   black: "#282a36",
@@ -11,11 +11,10 @@ const color = {
   orange: "#ffb86c",
   pink: "#ff79c6",
   purple: "#bd93f9",
-}
+};
 
 const Container = styled.div`
-  max-width: 200px;
-  width: 18%;
+  width: 200px;
   height: 100%;
   position: fixed;
   top: 0;
@@ -36,7 +35,7 @@ const Container = styled.div`
     display: inline-flex;
     justify-content: space-around;
   }
-`
+`;
 
 const Header = styled.h1`
   font-size: 2rem;
@@ -48,7 +47,7 @@ const Header = styled.h1`
   @media (max-width: 768px) {
     display: none;
   }
-`
+`;
 
 const ProfileImg = styled(Image)`
   display: none !important;
@@ -62,7 +61,7 @@ const ProfileImg = styled(Image)`
     display: inline-flex !important;
     align-self: left;
   }
-`
+`;
 
 const Navigation = styled.nav`
   padding: 1vw;
@@ -87,20 +86,20 @@ const Navigation = styled.nav`
       margin: 0 10px 0;
     }
   }
-`
+`;
 
 const Span = styled.span`
   text-decoration: none;
-`
+`;
 const GreenA = styled(Span)`
   color: ${props => props.color.green};
-`
+`;
 const PurpleA = styled(Span)`
   color: ${props => props.color.purple};
-`
+`;
 const PinkA = styled(Span)`
   color: ${props => props.color.pink};
-`
+`;
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -129,9 +128,9 @@ export default () => {
         }
       }
     }
-  `)
+  `);
 
-  const { siteTitle, linkOne, linkTwo, linkThree } = data.site.siteMetadata
+  const { siteTitle, linkOne, linkTwo, linkThree } = data.site.siteMetadata;
 
   return (
     <Container color={color}>
@@ -149,5 +148,5 @@ export default () => {
         </Link>
       </Navigation>
     </Container>
-  )
-}
+  );
+};
