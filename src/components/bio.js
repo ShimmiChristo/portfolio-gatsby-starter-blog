@@ -5,18 +5,19 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import Image from "gatsby-image";
+import styled from "styled-components";
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from "../utils/typography";
 
-const Bio = () => {
+const Bio = ({ heading = "", subheading = "" }) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 250, height: 250) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -30,39 +31,68 @@ const Bio = () => {
         }
       }
     }
-  `)
+  `);
+  const BioContainer = styled.div`
+    display: flex;
+    margin-bottom: ${rhythm(2.5)};
+    justify-content: center;
+    align-items: center;
 
-  const { author, social } = data.site.siteMetadata
+    @media (max-width: 768px) {
+      margin-bottom: ${rhythm(1)};
+    }
+  `;
+  const StyledImage = styled(Image)`
+    margin: 0 ${rhythm(2)};
+    margin-left: 0;
+    min-width: 50;
+    border-radius: 100%;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) {
+      display: none !important;
+      margin-bottom: ${rhythm(1)};
+    }
+  `;
+  const BioText = styled.div`
+    justify-content: center;
+  `;
+
+  const { author } = data.site.siteMetadata;
+  let bioHeader;
+  let bioSubHeader;
+  heading !== "" ? (bioHeader = <h2>{heading}</h2>) : (bioHeader = null);
+  subheading !== ""
+    ? (bioSubHeader = <h3>{subheading}</h3>)
+    : (bioSubHeader = null);
+
   return (
-    <div
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
-      <Image
+    <BioContainer>
+      <StyledImage
         fixed={data.avatar.childImageSharp.fixed}
         alt={author}
-        style={{
-          marginRight: rhythm(1 / 2),
-          marginBottom: 0,
-          minWidth: 50,
-          borderRadius: `100%`,
-        }}
-        imgStyle={{
-          borderRadius: `50%`,
-        }}
+        style={{}}
       />
-      <p>
-        Written by <strong>{author}</strong> who lives and works in New York
-        City building awesome things.
-        {` `}
-        <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
-        </a>
-      </p>
-    </div>
-  )
-}
+      <BioText>
+        {bioHeader}
+        {bioSubHeader}
+        <p>
+          I am web developer based in New York City. I make and update existing
+          websites.
+        </p>
+        <p>
+          I have experience with JavaScript, Gatsby, NodeJS, Google Analytics,
+          Google Tag Manager, AWS.
+        </p>
+        <p>
+          Any questions? Feel free to reach out at{" "}
+          <a className="orange" href="#">
+            chris@chrisshimmin.com
+          </a>
+        </p>
+      </BioText>
+    </BioContainer>
+  );
+};
 
-export default Bio
+export default Bio;

@@ -27,6 +27,16 @@ const Container = styled.div`
   background: ${props => props.color.black};
   z-index: 1;
 
+  * {
+    text-decoration: none;
+  }
+  a {
+    font-style: normal;
+  }
+  a:before {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     max-width: 100%;
     width: 100%;
@@ -100,6 +110,9 @@ const PurpleA = styled(Span)`
 const PinkA = styled(Span)`
   color: ${props => props.color.pink};
 `;
+const WhiteA = styled(Span)`
+  color: ${props => props.color.white};
+`;
 
 export default () => {
   const data = useStaticQuery(graphql`
@@ -134,8 +147,14 @@ export default () => {
 
   return (
     <Container color={color}>
-      <Header color={color}>{siteTitle}</Header>
-      <ProfileImg fixed={data.profileImage.childImageSharp.fixed} alt="" />
+      <Header color={color}>
+        <Link stlye="width: 100%;" to="/">
+          <WhiteA color={color}>{siteTitle}</WhiteA>
+        </Link>
+      </Header>
+      <Link stlye="width: 100%;" to="/">
+        <ProfileImg fixed={data.profileImage.childImageSharp.fixed} alt="" />
+      </Link>
       <Navigation color={color}>
         <Link stlye="width: 100%;" to="/about">
           <GreenA color={color}>{linkOne}</GreenA>
