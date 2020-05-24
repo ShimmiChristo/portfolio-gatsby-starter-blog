@@ -34,6 +34,7 @@ const Footer = styled.footer`
     display: inline-flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 0;
   }
 `;
 const Navigation = styled.nav`

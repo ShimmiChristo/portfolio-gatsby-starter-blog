@@ -29,7 +29,7 @@ export const pageQuery = graphql`
       }
     }
     websites: allMarkdownRemark(
-      filter: { frontmatter: { category: { eq: "Website" } } }
+      filter: { frontmatter: { category: { eq: "website" } } }
       sort: { order: DESC, fields: frontmatter___date }
     ) {
       edges {
