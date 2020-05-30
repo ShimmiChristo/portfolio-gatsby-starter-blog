@@ -2,25 +2,48 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import { rhythm } from "../utils/typography";
 
-import Bio from "../components/bio";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import styled from "styled-components";
 
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props;
-    const siteTitle = data.site.siteMetadata.title;
     const posts = data.allMarkdownRemark.edges;
 
+    const Header = styled.header`
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 1em;
+
+      > h3 {
+        margin-right: 0.5em;
+      }
+
+      a::before {
+        content: "";
+        width: 0;
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        border-width: 0 0 2px;
+        border-style: solid;
+        border-color: var(--Black);
+        transition: all 0.2s;
+      }
+      a:hover::before {
+        width: 100%;
+      }
+    `;
+
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="Home Page" />
-        <Bio />
+      <Layout location={this.props.location}>
+        <SEO title="Chris Shimmin's Blog" />
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug;
           return (
             <article key={node.fields.slug}>
-              <header>
+              <Header>
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),
@@ -31,14 +54,7 @@ class BlogIndex extends React.Component {
                   </Link>
                 </h3>
                 <small>{node.frontmatter.date}</small>
-              </header>
-              <section>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: node.frontmatter.description || node.excerpt,
-                  }}
-                />
-              </section>
+              </Header>
             </article>
           );
         })}
@@ -56,7 +72,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      filter: { frontmatter: { category: { eq: "blog" } } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           excerpt
