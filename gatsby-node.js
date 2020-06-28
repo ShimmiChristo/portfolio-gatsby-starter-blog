@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const website = "website";
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`);
+  const websitePost = path.resolve(`./src/templates/website-post.js`);
   const result = await graphql(
     `
       {
@@ -69,6 +70,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+    // Create website posts pages.
   websitePosts.forEach((post, index) => {
     const previous =
       index === websitePosts.length - 1 ? null : websitePosts[index + 1].node;
@@ -76,7 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.fields.slug,
-      component: blogPost,
+      component: websitePost,
       context: {
         slug: post.node.fields.slug,
         previous,
