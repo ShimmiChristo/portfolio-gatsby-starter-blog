@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { rhythm, scale } from "../utils/typography";
 import Image from "gatsby-image";
 import styled from "styled-components";
-import "./global.css";
+// import "./global.css";
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class Carousel extends React.Component {
 
   shiftSlide(dir) {
     this.setState({ active: true, allowShift: false });
-    if (this.state.allowShift == true) {
+    if (this.state.allowShift === true) {
       if (dir === 1) {
         this.next();
         this.setState({ index: this.state.index + 1 });
@@ -60,14 +60,14 @@ class Carousel extends React.Component {
     });
   }
   checkIndex() {
-    if (this.state.index == -1) {
+    if (this.state.index === -1) {
       this.setState({
         xVal: -(this.images.count * this.images.width + 600),
         index: this.images.count - 1,
       });
     }
 
-    if (this.state.index == this.images.count) {
+    if (this.state.index === this.images.count) {
       this.setState({ xVal: -this.images.width * 3, index: 0 });
     }
   }
@@ -80,16 +80,18 @@ class Carousel extends React.Component {
     const last = data[data.length - 1];
     const secondLast = data[data.length - 2];
     const thirdLast = data[data.length - 3];
+    
     const Item = styled.div`
       width: ${300 - 20}px;
       height: 200px;
       margin: 0 10px;
-      background-color: gray;
       flex-shrink: 0;
 
-      > image {
-        width: 100%;
-        height: 100%;
+      a {
+        display: initial;
+      }
+      a:before {
+        display: none;
       }
     `;
     const CarouselBtn = styled.button`
@@ -136,7 +138,7 @@ class Carousel extends React.Component {
       margin-right: 60px;
     `;
     return (
-      <div style={{ marginBottom: rhythm(1 / 4) }}>
+      <div className="flex flex-column" style={{ marginBottom: rhythm(1 / 4) }}>
         <CarouselTitle>{title}</CarouselTitle>
         <div className="carouselContainer">
           <PreviousButton
@@ -153,16 +155,31 @@ class Carousel extends React.Component {
             >
               <Item className="item">
                 <Image
+                  style={{
+                    width: `100%`,
+                    height: `100%`,
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                   fixed={thirdLast.node.frontmatter.url.childImageSharp.fixed}
                 />
               </Item>
               <Item className="item">
                 <Image
+                  style={{
+                    width: `100%`,
+                    height: `100%`,
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                   fixed={secondLast.node.frontmatter.url.childImageSharp.fixed}
                 />
               </Item>
               <Item className="item">
                 <Image
+                  style={{
+                    width: `100%`,
+                    height: `100%`,
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                   fixed={last.node.frontmatter.url.childImageSharp.fixed}
                 />
               </Item>
@@ -173,7 +190,14 @@ class Carousel extends React.Component {
                 return (
                   <Item key={id} className="item">
                     <Link to={slug}>
-                      <Image fixed={url} />
+                      <Image
+                        style={{
+                          width: `100%`,
+                          height: `100%`,
+                        }}
+                        imgStyle={{ objectFit: "contain" }}
+                        fixed={url}
+                      />
                     </Link>
                   </Item>
                 );
@@ -181,16 +205,31 @@ class Carousel extends React.Component {
 
               <Item className="item">
                 <Image
+                  style={{
+                    width: `100%`,
+                    height: `100%`,
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                   fixed={first.node.frontmatter.url.childImageSharp.fixed}
                 />
               </Item>
               <Item className="item">
                 <Image
+                  style={{
+                    width: `100%`,
+                    height: `100%`,
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                   fixed={secondFirst.node.frontmatter.url.childImageSharp.fixed}
                 />
               </Item>
               <Item className="item">
                 <Image
+                  style={{
+                    width: `100%`,
+                    height: `100%`,
+                  }}
+                  imgStyle={{ objectFit: "contain" }}
                   fixed={thirdFirst.node.frontmatter.url.childImageSharp.fixed}
                 />
               </Item>

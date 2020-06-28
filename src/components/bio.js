@@ -9,7 +9,6 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Image from "gatsby-image";
 import styled from "styled-components";
-
 import { rhythm } from "../utils/typography";
 
 const Bio = ({ heading = "", subheading = "" }) => {
@@ -27,6 +26,7 @@ const Bio = ({ heading = "", subheading = "" }) => {
           author
           social {
             twitter
+            email
           }
         }
       }
@@ -59,6 +59,7 @@ const Bio = ({ heading = "", subheading = "" }) => {
   `;
 
   const { author } = data.site.siteMetadata;
+  const { email } = data.site.siteMetadata.social;
   let bioHeader;
   let bioSubHeader;
   heading !== "" ? (bioHeader = <h2>{heading}</h2>) : (bioHeader = null);
@@ -77,16 +78,16 @@ const Bio = ({ heading = "", subheading = "" }) => {
         {bioHeader}
         {bioSubHeader}
         <p>
-          I am web developer based in New York City. I make and update existing
-          websites.
+          I am web developer based in New York City. I create and improve existing
+          websites. Creator and owner of Hoboken Web Solutions.
         </p>
         <p>
-          I have experience with JavaScript, Gatsby, NodeJS, Google Analytics,
+          I have experience with JavaScript, Gatsby, NodeJS, SFCC, E-Commerce Google Analytics,
           Google Tag Manager, AWS.
         </p>
         <p>
           Any questions? Feel free to reach out at{" "}
-          <a className="orange" href="#">
+          <a className="green" href={`mailto:${email}`}>
             chris@chrisshimmin.com
           </a>
         </p>

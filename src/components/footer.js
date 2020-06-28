@@ -140,16 +140,16 @@ export default () => {
   return (
     <Footer color={color}>
       <Social>
-        <a href={`https://twitter.com/${social.twitter}`} target="_blank">
+        <a href={`https://twitter.com/${social.twitter}`} target="_blank" rel="noopener noreferrer">
           <Image fixed={data.twitter.childImageSharp.fixed} alt="twitter" />
         </a>
         <Link to="/about">
           <Image fixed={data.gmail.childImageSharp.fixed} alt="gmail" />
         </Link>
-        <a href={`https://linkedin.com/${social.linkedin}`} target="_blank">
+        <a href={`https://linkedin.com/${social.linkedin}`} target="_blank" rel="noopener noreferrer">
           <Image fixed={data.linkedin.childImageSharp.fixed} alt="linked in" />
         </a>
-        <a href={`https://github.com/${social.github}`} target="_blank">
+        <a href={`https://github.com/${social.github}`} target="_blank" rel="noopener noreferrer">
           <Image fixed={data.github.childImageSharp.fixed} alt="github" />
         </a>
       </Social>

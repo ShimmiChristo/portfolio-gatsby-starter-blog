@@ -7,8 +7,8 @@ module.exports = {
     siteTitle: `Chris`,
     social: {
       twitter: `shimmiChristo`,
-      email: `https://chris@chrisshimmin.com`,
-      linkedin: `in/chris-shimmin-29840b7a/`,
+      email: `chris@chrisshimmin.com`,
+      linkedin: `in/chris-shimmin/`,
       github: `shimmiChristo`,
     },
     linkOne: `About`,

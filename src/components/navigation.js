@@ -1,8 +1,8 @@
 import React from "react";
 import { useStaticQuery, Link, graphql } from "gatsby";
-
 import styled from "styled-components";
 import Image from "gatsby-image";
+
 
 const color = {
   black: "#282a36",
@@ -46,7 +46,6 @@ const Container = styled.div`
     justify-content: space-around;
   }
 `;
-
 const Header = styled.h1`
   font-size: 2rem;
   color: ${props => props.color.white};
@@ -58,7 +57,6 @@ const Header = styled.h1`
     display: none;
   }
 `;
-
 const ProfileImg = styled(Image)`
   display: none !important;
 
@@ -72,18 +70,15 @@ const ProfileImg = styled(Image)`
     align-self: left;
   }
 `;
-
 const Navigation = styled.nav`
   padding: 1vw;
   flex-direction: column;
 
   > a {
-    font-size: 1rem
+    font-size: 1rem;
     color: #fff;
     margin: 0 10px 15px;
     display: block;
-    text-decorationcolor: #fff;
-    text-decoration: none;
     box-shadow: none;
     text-align: center;
   }
@@ -97,20 +92,16 @@ const Navigation = styled.nav`
     }
   }
 `;
-
-const Span = styled.span`
-  text-decoration: none;
-`;
-const GreenA = styled(Span)`
+const GreenA = styled.span`
   color: ${props => props.color.green};
 `;
-const PurpleA = styled(Span)`
+const PurpleA = styled.span`
   color: ${props => props.color.purple};
 `;
-const PinkA = styled(Span)`
+const PinkA = styled.span`
   color: ${props => props.color.pink};
 `;
-const WhiteA = styled(Span)`
+const WhiteA = styled.span`
   color: ${props => props.color.white};
 `;
 
@@ -156,14 +147,14 @@ export default () => {
         <ProfileImg fixed={data.profileImage.childImageSharp.fixed} alt="" />
       </Link>
       <Navigation color={color}>
-        <Link stlye="width: 100%;" to="/about">
+        <Link stlye="width: 100%;" to="/about" activeClassName="active">
           <GreenA color={color}>{linkOne}</GreenA>
         </Link>
-        <Link to="/work">
-          <PurpleA color={color}>{linkTwo} </PurpleA>
+        <Link to="/work" activeClassName="active">
+          <PurpleA color={color}>{linkTwo}</PurpleA>
         </Link>
-        <Link to="/blog">
-          <PinkA color={color}>{linkThree} </PinkA>
+        <Link to="/blog" activeClassName="active">
+          <PinkA color={color}>{linkThree}</PinkA>
         </Link>
       </Navigation>
     </Container>

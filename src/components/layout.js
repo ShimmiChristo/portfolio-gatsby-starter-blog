@@ -5,69 +5,68 @@ import styled from "styled-components";
 import Navigation from "../components/navigation";
 import Footer from "../components/footer";
 
-const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
-  const LayoutContainer = styled.div`
-    margin-left: 200px;
-    padding: ${rhythm(2)};
-    max-width: 1200px;
+class Layout extends React.Component {
+  render() {
+    const { location, title, children } = this.props;
+    const rootPath = `${__PATH_PREFIX__}/`;
+    let header;
+    const LayoutContainer = styled.div`
+      margin-left: 200px;
+      padding: ${rhythm(2)};
+      max-width: 1200px;
 
-    @media (max-width: 768px) {
-      margin: 150px auto 100px;
+      @media (max-width: 768px) {
+        margin: 150px auto 100px;
+        padding: ${rhythm(1)};
+      }
+    `;
+    const Main = styled.main`
+      max-width: 1000px;
+    `;
+
+    if (location.pathname === rootPath) {
+      header = (
+        <h1
+          style={{
+            ...scale(1.5),
+            marginBottom: rhythm(1.5),
+            marginTop: 0,
+            display: "none",
+          }}
+        >
+          <Link
+            style={{
+              boxShadow: `none`,
+              textDecoration: `none`,
+              color: `inherit`,
+            }}
+            to={`/`}
+          >
+            {title}
+          </Link>
+        </h1>
+      );
+    } else {
+      header = (
+        <h1
+          style={{
+            ...scale(1),
+            marginTop: 0,
+          }}
+        >
+          {title}
+        </h1>
+      );
     }
-  `;
-
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h2
-        style={{
-          ...scale(1),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h2>
+    return (
+      <LayoutContainer>
+        <Navigation />
+        <header>{header}</header>
+        <Main>{children}</Main>
+        <Footer />
+      </LayoutContainer>
     );
   }
-  return (
-    <LayoutContainer>
-      <Navigation />
-      <header>{header}</header>
-      <main>{children}</main>
-      <Footer />
-    </LayoutContainer>
-  );
-};
+}
 
 export default Layout;

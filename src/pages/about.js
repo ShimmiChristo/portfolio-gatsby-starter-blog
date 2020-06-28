@@ -100,6 +100,7 @@ const AboutPage = ({ location, heading, subheading }) => {
             <a
               className="purple"
               target="_blank"
+              rel="noopener noreferrer"
               href="https://youtube.com/user/shimdoggy"
             >
               YouTube
@@ -108,6 +109,7 @@ const AboutPage = ({ location, heading, subheading }) => {
             <a
               className="green"
               target="_blank"
+              rel="noopener noreferrer"
               href="https://twitter.com/shimmiChristo"
             >
               Twitter
