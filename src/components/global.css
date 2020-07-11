@@ -6,32 +6,6 @@
   --Black: #282a36;
   --Light-Black: #52545e;
 }
-/* .background-black {
-  position: relative;
-  padding: 6px 4px;
-  background-color: #282a36;
-}
-.background-black:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  background-color: #282a36;
-  padding: 0 4px;
-  visibility: visible;
-  transition: all 0.3s ease-in-out 0s;
-} */
-/* .background-black:hover:before {
-  visibility: visible;
-  width: 100%;
-}
-h3 > a {
-  padding: 6px 4px;
-  background-color: #282a36;
-} */
 h2 {
   margin-bottom: 0.5em;
 }
